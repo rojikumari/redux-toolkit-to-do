@@ -19,6 +19,16 @@ const AddTodo = () => {
 		);
 		setValue("");
 	};
+	const handleKeyPress = (event) => {
+		if(event.key === 'Enter'){
+			dispatch(
+				addTask({
+					task: value
+				})
+			);
+			setValue("");
+		}
+	}
 	return (
 		<div className="add-todo">
 			<input
@@ -27,6 +37,7 @@ const AddTodo = () => {
 				placeholder="Add Item"
 				value={value}
 				onChange={(event) => setValue(event.target.value)}
+				onKeyPress={handleKeyPress} 
 			></input>
 
 			<button className="task-button" onClick={onSubmit}>
