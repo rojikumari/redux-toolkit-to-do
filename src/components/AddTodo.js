@@ -4,28 +4,21 @@ import { addTask } from "../redux/tasksSlice";
 
 const AddTodo = () => {
 	const [value, setValue] = useState('');
-
 	const dispatch = useDispatch();
-
 	const onSubmit = (event) => {
 		event.preventDefault();
-
-		if(value.trim().length === 0)
-		{
+		if(value.trim().length === 0){
 			alert("Enter a task before adding !!");
 			setValue("");
 			return;
 		}
-
 		dispatch(
 			addTask({
 				task: value
 			})
 		);
-
 		setValue("");
 	};
-
 	return (
 		<div className="add-todo">
 			<input

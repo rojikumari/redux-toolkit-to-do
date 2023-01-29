@@ -3,9 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteTask } from "../redux/tasksSlice";
 
 const TodoItem = ({ id, title }) => {
-
 	const dispatch = useDispatch();
-
 	const removeTask=()=>{
 		dispatch(
 			deleteTask({
@@ -13,7 +11,6 @@ const TodoItem = ({ id, title }) => {
 			})
 		)
 	}
-
 	return (
 		<li className="task-item">
 			<div>
