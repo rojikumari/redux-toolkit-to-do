@@ -1,16 +1,27 @@
 import React from 'react';
-import TodoItem from './TodoItem';
-import { useSelector } from "react-redux";
-
+// import TodoItem from './TodoItem';
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTask } from "../redux/tasksSlice";
 const TodoList = () => {
-	const todos = useSelector((state)=>{
-		return state.tasks;
-	});
-
+	const todos = useSelector((state)=> state.tasks);
+	const dispatch = useDispatch();
 	return (
 		<ul className="tasks-list">
 			{todos.map((todo) => (
-				<TodoItem id={todo.id} title={todo.name} completed={todo.status} />
+				<li className="task-item">
+					<div>
+						{todo.name }
+					</div>
+					<div>
+						<button className="remove-task-button" onClick={()=>{
+							dispatch(
+								deleteTask({
+									id: todo.id
+								})
+	                     	)
+						}}>Delete</button>
+					</div>
+		       </li>
 			))}
 		</ul>
 	);
