@@ -2,17 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const tasksSlice = createSlice({
     name: "tasks",
-    initialState:[],
+    initialState: {
+        todo: [],
+    },
     reducers:{
         addTask: (state, action)=>{
-            const newTask = {
-                id: new Date(),
-                name: action.payload.task
-            }
-            state.push(newTask);
+            state.todo.push(action.payload);
         },
         deleteTask: (state, action)=>{
-            return state.filter((item) => item.id !== action.payload.id);
+            state.todo.splice(action.payload.id,1)
         }
     }
 });

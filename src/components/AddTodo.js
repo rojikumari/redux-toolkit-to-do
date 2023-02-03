@@ -13,9 +13,7 @@ const AddTodo = () => {
 			return;
 		}
 		dispatch(
-			addTask({
-				task: value
-			})
+			addTask(value)
 		);
 		setValue("");
 	};
